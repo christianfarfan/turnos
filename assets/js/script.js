@@ -1,4 +1,5 @@
 $(document).ready(function(){
+      // envio a guardar pacientes
       $('#envio-patient').click(function(){
       var datos = $('#datos').serialize();
       $.post({
@@ -15,6 +16,9 @@ $(document).ready(function(){
         return false;
 
         });
+
+      // envio a editar pacientes
+      
 
       
       

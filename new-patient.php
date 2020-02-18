@@ -46,12 +46,21 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
  -->
-          
+          <div class="row">
+            <div class="">
+                    <div class="card-title">
+                      <legend class="btn">Nuevo Paciente</legend>
+                    </div>
+                  </div>
+          </div>
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
+           
             <div class="col-xl-4 col-md-12 mb-16">
               <div class="card border-left-primary shadow h-100 py-2">
+                  
+
                 <div class="card-body">
                   <form method="post" id="datos">
                     <div class="form-group">

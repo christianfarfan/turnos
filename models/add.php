@@ -16,7 +16,7 @@
 			
 				echo "<script>
 						alert('Se Creo el nuevo paciente Correctamente');
-						location.href = '../patients';
+						location.href = 'patients';
 					  </script>";
 			
 			break;

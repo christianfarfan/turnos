@@ -108,6 +108,115 @@
 			
 		}
 
+		#ver pacientes
+		function verPacientes(){
+			$sql = "SELECT * FROM pacientes order by id_paciente desc";
+			@$statement = Conexion::Conectar();
+			$consulta = $statement->query($sql)->fetchAll();
+			echo "
+			<table width='100%' id='table'>
+               <thead>
+               <tr>
+				<th>CEDULA</th>
+				<th>NOMBRE</th>
+				<th>APELLIDO</th>
+				<th>CORREO</th>
+				<th>CELULAR</th>
+				<th>FECHA NACIMIENTO</th>
+				<th></th>
+               </tr>
+               </thead>
+               <tbody>
+			";
+			foreach ($consulta as $value) {
+			    echo 
+			    '
+					<tr>
+                    	<td>'.$value['cedula_paciente'].'</td>
+						<td>'.$value['nombre_paciente'].'</td>
+						<td>'.$value['apellido_paciente'].'</td>
+						<td>'.$value['correo_paciente'].'</td>
+						<td>'.$value['celular_paciente'].'</td>
+						<td>'.$value['fecha_nacimiento'].'</td>
+						<td>
+							<a href="edit-patient?id='.$value['id_paciente'].'"><img src="assets/img/iconos/pencil.png" /></a> 
+							<a href="models/delete?model=patient&id='.$value['id_paciente'].'"><img src="assets/img/iconos/delete.png" /></a>
+						</td>
+					</tr>
+
+                    
+                   
+                     	
+			    ';
+			}
+			echo "</tbody></table> ";
+		}
+
+		#ver pacientes
+		function editarPacientes($id){
+			$sql = "SELECT * FROM pacientes WHERE id_paciente=".$id." order by id_paciente desc";
+			@$statement = Conexion::Conectar();
+			$consulta = $statement->query($sql)->fetchAll();
+			
+			foreach ($consulta as $value) {
+			    echo 
+			    '
+					<form method="post" id="datos-edit-patient">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Cedula</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cedula" placeholder="Cedula" value="'.$value['cedula_paciente'].'" required id="cedula">
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Nombre</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre" value="'.$value['nombre_paciente'].'" name="nombre" required id="nombre">
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Apellido</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellido" value="'.$value['apellido_paciente'].'" name="apellido" required id="apellido">
+                      
+                    </div>
+                    
+                    
+            
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-12 mb-16">
+              <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                  
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Correo</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" placeholder="Correo" value="'.$value['correo_paciente'].'" required id="correo">
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Celular</label>
+                      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Celular" value="'.$value['celular_paciente'].'" name="celular" required id="celular">
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Fecha De Nacimiento</label>
+                      <input type="date" class="form-control" id="exampleInputPassword1" placeholder="" value="'.$value['fecha_nacimiento'].'" name="fecha_nacimiento" required id="fecha_nacimiento">
+                      <input type="hidden" name="accion" value="update-patient" id="accion">
+                      <input type="hidden" name="id" value="'.$value['id_paciente'].'" id="id">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="update-patient">Guardar</button>
+                  </form>
+
+                    
+
+                     	
+			    ';
+			}
+			
+		}
+
 		
 
 	}

@@ -20,6 +20,20 @@
 			
 			break;
 
+			#eliminar Paciente
+			case 'patient':
+			
+			$sql = "DELETE FROM pacientes WHERE id_paciente=".$_GET['id']."; ";
+			@$statement = Conexion::Conectar();
+			$consulta = $statement->query($sql);
+			
+				echo "<script>
+						alert('Se Elimino Correctamente');
+						location.href = '../patients';
+					  </script>";
+			
+			break;
+
 			
 	}
 

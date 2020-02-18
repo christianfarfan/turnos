@@ -51,6 +51,19 @@
 					  </script>";
 			
 			break;
+
+			#actualizar datos de pacientes 
+			case 'update-patient':
+			$sql = "UPDATE pacientes SET cedula_paciente = '".$_POST['cedula']."', nombre_paciente = '".$_POST['nombre']."', apellido_paciente = '".$_POST['apellido']."', correo_paciente='".$_POST['correo']."', celular_paciente='".$_POST['celular']."', fecha_nacimiento='".$_POST['fecha_nacimiento']."'  WHERE id_paciente = ".$_POST['id']."; ";
+			@$statement = Conexion::Conectar();
+			$consulta = $statement->query($sql);
+		
+				echo "<script>
+						alert('Se ha actualizado Correctamente.');
+						location.href = ('patients');
+					  </script>";
+			
+			break;
 		
 	}
 
